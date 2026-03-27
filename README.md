@@ -1,15 +1,46 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg)](https://github.com/hacs/integration)
-<a href="https://www.buymeacoffee.com/rudhan" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
-# Lovelace Analog Clock
+# Lovelace Analog Clock (HTML Version)
+
+This is a fork of the original [Analog Clock](https://github.com/tomasrudh/analogclock) card, reimplemented using SVG + HTML/CSS rendering instead of Canvas 2D for sharper display on HiDPI screens.
+
+![clock-new](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/clock-new.png?raw=true)
+![clock-old](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/clock-old.png?raw=true)
+
+## Improvements over Original
+
+- **Sharper display**: SVG + HTML/CSS rendering, always crisp on any DPI
+- **Auto theme adaptation**: Uses `var(--primary-text-color)` for automatic light/dark mode switching via browser
+
+## Not Implemented
+
+The following features from the original are not yet available:
+
+| Feature | Workaround |
+|---------|------------|
+| `timezone` | Uses browser's local time zone |
+| `show_timezone` / `timezonedisplayname` | - |
+| `hide_weeknumber` | - |
+| `style_hourhand` / `style_minutehand` / `style_secondhand` | Fixed to display a single hand style |
+| Custom watch face (picture-elements) | - |
+
+## Installation
+
+Add `https://github.com/ATFieldBeast/analog-clock-html` as a custom repository of type Dashboard in HACS.
+
+Search and install the 'Analog Clock HTML'.
+
+## Configuration of the Example Picture Above
+
+```yaml
+type: "custom:analog-clock-html"
+diameter: 280
+locale: zh
+```
+
+---
+
+# Some Original Repository Instructions
 An analog clock card for Home Assistant Lovelace. Colors are fully customizable, weekday names and date formats are localizable.
 This one accepts vw % and variable --clock-size
-
-```diff
-- Breaking changes since original 2.0
-Some of the formats for 'dateformat' and 'timeformat' have changed text. Please see 'Formats' for the new formats.
-
-```
-[Formats](https://github.com/tomasrudh/analogclock/blob/3.0/Formats.md)
 
 ## Installation
 
@@ -23,9 +54,9 @@ You might have to add a character and remove it again, before the Save button be
 
 ## Configuration
 
-For a list of available options for dateformat and timeformat, see [Formats](https://github.com/tomasrudh/analogclock/blob/3.0/Formats.md).
+For a list of available options for dateformat and timeformat, see [Formats](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Formats.md).
 
-![Analog clock2](https://github.com/tomasrudh/analogclock/blob/main/Images/AnalogClock2.png?raw=true)
+![Analog clock2](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/AnalogClock2.png?raw=true)
 
 | Name | Type | Default | Description
 | --- | --- | --- | --- |
@@ -74,7 +105,7 @@ All colors can be entered in one of four different ways:
 
 ### Examples
 
-![Analog clock3](https://github.com/tomasrudh/analogclock/blob/main/Images/AnalogClock3.png?raw=true)
+![Analog clock3](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/AnalogClock3.png?raw=true)
 
 ```
 - type: "custom:analog-clock"
@@ -90,76 +121,3 @@ All colors can be entered in one of four different ways:
   - time: 23:00-08:00
     color_background: maroon
 ```
-<img width="231" height="208" alt="image" src="https://github.com/user-attachments/assets/53989dfe-9d8f-4aa3-84fa-e1e29f56b7ea" />
-
-
-```
-- type: "custom:analog-clock"
-  hide_secondhand: true
-  color_hourhand: "#326ba8"
-  color_minutehand: "#3273a8"
-  color_digitaltime: "#CCCCCC"
-  color_facedigits: "#a83832"
-  hide_facedigits: true
-  hide_minorticks: true
-  timezone: America/Fortaleza
-  dateformat: "mmm d yyyy"
-  timeformat: "HH MM"
-```
-
-Style 1:
-![Style 1](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-1.png?raw=true)
-Style 2:
-![Style 2](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-2.png?raw=true)
-Style 3:
-![Style 3](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-3.png?raw=true)
-Style 4:
-![Style 4](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-4.png?raw=true)
-Style 5:
-![Style 5](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-5.png?raw=true)
-Style 6:
-![Style 6](https://github.com/tomasrudh/analogclock/blob/main/Images/Style-6.png?raw=true)
-
-## Custom watch face
-
-It is possible to supply your own watch face, you can do that by using a [picture-elements card](https://www.home-assistant.io/dashboards/picture-elements/) and also [card_mod](https://github.com/thomasloven/lovelace-card-mod). The trick is to set the background to transparent, this is done in two places 'rgba(0,0,0,0)'.
-
-![image](https://github.com/tomasrudh/analogclock/blob/main/Images/WatchFaceRoman.png?raw=true)
-
-```
-type: picture-elements
-elements:
-  - type: custom:analog-clock
-    style:
-      left: 50%
-      top: 50%
-    diameter: 200
-    locale: en-US
-    hide_majorticks: true
-    hide_minorticks: true
-    hide_weeknumber: true
-    hide_facedigits: true
-    dateformat: "yyyy-mm-dd"
-    color_background: rgba(0,0,0,0)
-    color_hourhand: "#326ba8"
-    color_minutehand: "#3293a8"
-    color_secondhand: red
-    color_digitaltime: "#CCCCCC"
-    color_facedigits: "#a83832"
-    card_mod:
-      style: |
-        ha-card {
-          background: rgba(0,0,0,0);
-        }
-image: /local/images/WatchFaceRoman.png
-```
-
-## Troubleshooting
-
-Should the card run into a problem will an exclamation mark show in the upper left corner.
-
-![image](https://github.com/tomasrudh/analogclock/blob/main/Images/Error.png?raw=true)
-
-Press F12 in your browser and see the error message in the Console tab.
-
-While the exclamation mark show might the card not show properly.
