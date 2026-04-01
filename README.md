@@ -60,8 +60,8 @@ For a list of available options for dateformat and timeformat, see [Formats](htt
 | color_minutehand | String | var(--primary-text-color) | Color of the minute hand |
 | color_secondhand | String | var(--primary-text-color) | Color of the second hand |
 | color_text | String | var(--primary-text-color) | Color of texts |
-| dateformat | String | yy/mm/dd | Format for the date |
-| timeformat | String | | Format for the time |
+| dateformat | String | HA / browser | Format for the date |
+| timeformat | String | HA / browser | Format for the time |
 | locale | String | HA / browser | Locale for date and week day |
 | timezone | String | Browser | Time zone, for example Europe/Stockholm [Time zones](https://timezonedb.com/time-zones)|
 | timezonedisplayname | String | | Custom name for the displayed time zone |
