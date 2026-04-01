@@ -8,7 +8,7 @@ This is a fork of the original [Analog Clock](https://github.com/tomasrudh/analo
 ## Improvements over Original
 
 - **Sharper display**: SVG + HTML/CSS rendering, always crisp on any DPI
-- **Auto theme adaptation**: Uses `var(--primary-text-color)` for automatic light/dark mode switching via browser
+- **Auto theme adaptation**: Default use `var(--primary-text-color)` for automatic light/dark mode switching via browser
 
 ## Not Implemented
 
@@ -16,9 +16,6 @@ The following features from the original are not yet available:
 
 | Feature | Workaround |
 |---------|------------|
-| `timezone` | Uses browser's local time zone |
-| `show_timezone` / `timezonedisplayname` | - |
-| `hide_weeknumber` | - |
 | `style_hourhand` / `style_minutehand` / `style_secondhand` | Fixed to display a single hand style |
 | Custom watch face (picture-elements) | - |
 
@@ -31,9 +28,14 @@ Search and install the 'Analog Clock HTML'.
 ## Configuration of the Example Picture Above
 
 ```yaml
-type: "custom:analog-clock-html"
-diameter: 280
+type: custom:analog-clock-html
+diameter: 260
 locale: zh
+timezone: Asia/Shanghai
+dateformat: yy年mm月dd日
+color_hourhand: rgba(0,0,0,0)
+color_minutehand: rgba(0,0,0,0)
+hide_facedigits: true
 ```
 
 ---
@@ -41,16 +43,6 @@ locale: zh
 # Some Original Repository Instructions
 An analog clock card for Home Assistant Lovelace. Colors are fully customizable, weekday names and date formats are localizable.
 This one accepts vw % and variable --clock-size
-
-## Installation
-
-Install using HACS, search for 'Analog Clock'.
-
-To add the card in GUI mode, click +Add Card, scroll down to the bottom and press Manual. Delete the text already in the code panel and add this:
-```
-type: "custom:analog-clock"
-```
-You might have to add a character and remove it again, before the Save button becomes active.
 
 ## Configuration
 
@@ -60,40 +52,29 @@ For a list of available options for dateformat and timeformat, see [Formats](htt
 
 | Name | Type | Default | Description
 | --- | --- | --- | --- |
-| locale | String | HA setting | Locale for date and week day |
-| timezone | String | Browser setting | Time zone, for example Europe/Stockholm [Time zones](https://timezonedb.com/time-zones)|
-| show_timezone | Boolean | false | If true, show time zone instead of week day |
-| timezonedisplayname | String | | Name of the time zone to be shown |
-| diameter | Integer | Automatic | Diameter of the clock |
-| hide_secondhand | Boolean | false | If true, the second hand is hidden |
-| hide_weeknumber | Boolean | true | If true, the week number is hidden |
-| hide_weekday | Boolean | false | If true, the week day is hidden |
-| hide_date | Boolean | false | If true, the date is hidden |
-| hide_facedigits | Boolean | false | If true, the hour numbers are hidden |
-| hide_digitaltime | Boolean | false | If true, the digital time hidden |
 | color_background | String | transparent | Background color of the clock |
-| color_ticks | String | Silver | Color of the border ticks |
+| color_ticks | String | var(--primary-text-color) | Color of the border ticks |
+| color_facedigits | String | var(--primary-text-color) | Color of the face digits |
+| color_digitaltime | String | var(--primary-text-color) | Color of the digital time |
+| color_hourhand | String | var(--primary-text-color) | Color of the hour hand |
+| color_minutehand | String | var(--primary-text-color) | Color of the minute hand |
+| color_secondhand | String | var(--primary-text-color) | Color of the second hand |
+| color_text | String | var(--primary-text-color) | Color of texts |
+| dateformat | String | yy/mm/dd | Format for the date |
+| timeformat | String | | Format for the time |
+| locale | String | HA / browser | Locale for date and week day |
+| timezone | String | Browser | Time zone, for example Europe/Stockholm [Time zones](https://timezonedb.com/time-zones)|
+| timezonedisplayname | String | | Custom name for the displayed time zone |
+| hide_timezone | Boolean | true | If true, hide time zone (show weekday instead) |
 | hide_minorticks | Boolean | false | Hides the minor ticks |
 | hide_majorticks | Boolean | false | Hides the major ticks and the outer circle |
-| color_facedigits | String | Silver | Color of the borde digits |
-| color_digitaltime | String | #CCCCCC | Color of the digital time |
-| color_hourhand | String | #CCCCCC | Color of the hour hand |
-| color_minutehand | String | #EEEEEE | Color of the minute hand |
-| color_secondhand | String | Silver | Color of the second hand |
-| color_text | String | Silver | Color of texts |
-| style_hourhand | Integer | 1 | Style for the hour hand |
-| style_minutehand | Integer | 1 | Style for the minute hand |
-| style_secondhand | Integer | 3 | Style for the second hand |
-| dateformat | String | HA setting | Format for the date |
-| timeformat | String | HA setting | Format for the time |
-
-Themes are settings that are applied during a time interval. Any setting except timezone and diameter can be set in themes. There can be multiple 'time' sections.
-
-| Name | Type | Description
-| --- | --- | --- |
-| themes | | Has subvalues with timed settings |
-| - time | time interval | A time interval in the format HHMM-HHMM, there can be multiple 'time' sections
-| color_background | String | Background color of the clock |
+| hide_facedigits | Boolean | false | If true, the hour numbers are hidden |
+| hide_date | Boolean | false | If true, the date is hidden |
+| hide_weekday | Boolean | false | If true, the week day is hidden |
+| hide_weeknumber | Boolean | true | If true, the week number is hidden |
+| hide_digitaltime | Boolean | false | If true, the digital time hidden |
+| hide_secondhand | Boolean | false | If true, the second hand is hidden |
+| diameter | Integer | 220 | Diameter of the clock |
 
 ### Colors
 
