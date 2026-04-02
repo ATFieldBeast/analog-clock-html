@@ -28,6 +28,8 @@ class AnalogClockHTML extends HTMLElement {
     let hide_WeekDay = false;
     let hide_WeekNumber = true;
     let hide_DigitalTime = false;
+    let hide_HourHand = false;
+    let hide_MinuteHand = false;
     let hide_SecondHand = false;
     let demo = false;
 
@@ -325,6 +327,8 @@ class AnalogClockHTML extends HTMLElement {
       if (hide_Date) dateDisplay.style.display = "none";
       if (hide_WeekDay) weekdayDisplay.style.display = "none";
       if (hide_WeekNumber) weekNumberDisplay.style.display = "none";
+      if (hide_HourHand) hourHand.style.display = "none";
+      if (hide_MinuteHand) minHand.style.display = "none";
       if (hide_SecondHand) secHand.style.display = "none";
     }
 
@@ -423,6 +427,10 @@ class AnalogClockHTML extends HTMLElement {
       if (config.hide_weeknumber !== undefined) hide_WeekNumber = config.hide_weeknumber;
       if (config.hide_DigitalTime !== undefined) hide_DigitalTime = config.hide_DigitalTime;
       if (config.hide_digitaltime !== undefined) hide_DigitalTime = config.hide_digitaltime;
+      if (config.hide_HourHand !== undefined) hide_HourHand = config.hide_HourHand;
+      if (config.hide_hourhand !== undefined) hide_HourHand = config.hide_hourhand;
+      if (config.hide_MinuteHand !== undefined) hide_MinuteHand = config.hide_MinuteHand;
+      if (config.hide_minutehand !== undefined) hide_MinuteHand = config.hide_minutehand;
       if (config.hide_SecondHand !== undefined) hide_SecondHand = config.hide_SecondHand;
       if (config.hide_secondhand !== undefined) hide_SecondHand = config.hide_secondhand;
       if (config.demo !== undefined) demo = config.demo;
