@@ -19,6 +19,10 @@ The following features from the original are not yet available:
 | `style_hourhand` / `style_minutehand` / `style_secondhand` | Fixed to display a single hand style |
 | Custom watch face (picture-elements) | - |
 
+## Original Repository Instruction
+An analog clock card for Home Assistant Lovelace. Colors are fully customizable, weekday names and date formats are localizable.
+This one accepts vw % and variable --clock-size
+
 ## Installation
 
 Add `https://github.com/ATFieldBeast/analog-clock-html` as a custom repository of type Dashboard in HACS.
@@ -38,21 +42,13 @@ hide_hourhand: true
 hide_minutehand: true
 ```
 
----
-
-# Some Original Repository Instructions
-An analog clock card for Home Assistant Lovelace. Colors are fully customizable, weekday names and date formats are localizable.
-This one accepts vw % and variable --clock-size
-
 ## Configuration
 
 For a list of available options for dateformat and timeformat, see [Formats](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Formats.md).
 
-![Analog clock2](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/AnalogClock2.png?raw=true)
-
 | Name | Type | Default | Description
 | --- | --- | --- | --- |
-| color_background | String | transparent | Background color of the clock |
+| color_background | String | rgba(0, 0, 0, 0) | Background color of the clock (default: transparent) |
 | color_ticks | String | var(--primary-text-color) | Color of the border ticks |
 | color_facedigits | String | var(--primary-text-color) | Color of the face digits |
 | color_digitaltime | String | var(--primary-text-color) | Color of the digital time |
@@ -69,16 +65,16 @@ For a list of available options for dateformat and timeformat, see [Formats](htt
 | timezone | String | Browser | Time zone, for example Europe/Stockholm [Time zones](https://timezonedb.com/time-zones)|
 | timezonedisplayname | String | | Custom name for the displayed time zone |
 | hide_timezone | Boolean | true | If true, hide time zone (show weekday instead) |
-| hide_minorticks | Boolean | false | Hides the minor ticks |
-| hide_majorticks | Boolean | false | Hides the major ticks and the outer circle |
-| hide_facedigits | Boolean | false | If true, the hour numbers are hidden |
-| hide_date | Boolean | false | If true, the date is hidden |
-| hide_weekday | Boolean | false | If true, the week day is hidden |
-| hide_weeknumber | Boolean | true | If true, the week number is hidden |
-| hide_digitaltime | Boolean | false | If true, the digital time hidden |
-| hide_hourhand | Boolean | false | If true, the hour hand is hidden |
-| hide_minutehand | Boolean | false | If true, the minute hand is hidden |
-| hide_secondhand | Boolean | false | If true, the second hand is hidden |
+| hide_minorticks | Boolean | false | If true, hide the minor ticks |
+| hide_majorticks | Boolean | false | If true, hide the major ticks |
+| hide_facedigits | Boolean | false | If true, hide the hour numbers |
+| hide_date | Boolean | false | If true, hide the date |
+| hide_weekday | Boolean | false | If true, hide the weekday |
+| hide_weeknumber | Boolean | true | If true, hide the week number |
+| hide_digitaltime | Boolean | false | If true, hide the digital time |
+| hide_hourhand | Boolean | false | If true, hide the hour hand |
+| hide_minutehand | Boolean | false | If true, hide the minute hand |
+| hide_secondhand | Boolean | false | If true, hide the second hand |
 | diameter | Integer | 220 | Diameter of the clock |
 
 ### Colors
@@ -88,22 +84,3 @@ All colors can be entered in one of four different ways:
 - "#3273a8" The first two digits are the level of Red in hex, 00 - FF. The second two Green, and the last two Blue. "#000000" is black, "#FF00FF" is bright pink and "#FFFFFF" is white.
 - rgba(0,0,0,0) The first two number is the level of Red in decimal, 0 - 255. The second Green, the third Blue and the last is alpha. Alpha is in decimal 0 - 1, where 0 is transparent. rgba(0,0,0,1) is black, rgba(255,0,255,1) is bright pink, rgba(0,0,0,1) is white and rgba(0,0,0,0.5) is semi transparent. Note that the value should not be quoted.
 - "--secondary-text-color" Refers to Home Assistant CSS variables.
-
-### Examples
-
-![Analog clock3](https://github.com/ATFieldBeast/analog-clock-html/blob/main/Images/AnalogClock3.png?raw=true)
-
-```
-- type: "custom:analog-clock"
-  hide_secondHand: true
-  locale: sv-SE
-  diameter: 200 (you can now use vw % --var-clocksize)
-  color_hourhand: "#326ba8"
-  color_minutehand: "#3273a8"
-  color_digitaltime: "#CCCCCC"
-  color_facedigits: "#a83832"
-  color_ticks: "Silver"
-  themes:
-  - time: 23:00-08:00
-    color_background: maroon
-```
