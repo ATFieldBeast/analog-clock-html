@@ -33,9 +33,9 @@ diameter: 260
 locale: zh
 timezone: Asia/Shanghai
 dateformat: yy年mm月dd日
-color_hourhand: rgba(0,0,0,0)
-color_minutehand: rgba(0,0,0,0)
 hide_facedigits: true
+hide_hourhand: true
+hide_minutehand: true
 ```
 
 ---
@@ -59,7 +59,10 @@ For a list of available options for dateformat and timeformat, see [Formats](htt
 | color_hourhand | String | var(--primary-text-color) | Color of the hour hand |
 | color_minutehand | String | var(--primary-text-color) | Color of the minute hand |
 | color_secondhand | String | var(--primary-text-color) | Color of the second hand |
-| color_text | String | var(--primary-text-color) | Color of texts |
+| color_text | String | var(--primary-text-color) | Color of all texts (date, weekday, weeknumber) |
+| color_date | String | color_text | Color of the date |
+| color_weekday | String | color_text | Color of the weekday |
+| color_weeknumber | String | color_text | Color of the week number |
 | dateformat | String | HA / browser | Format for the date |
 | timeformat | String | HA / browser | Format for the time |
 | locale | String | HA / browser | Locale for date and week day |
@@ -73,6 +76,8 @@ For a list of available options for dateformat and timeformat, see [Formats](htt
 | hide_weekday | Boolean | false | If true, the week day is hidden |
 | hide_weeknumber | Boolean | true | If true, the week number is hidden |
 | hide_digitaltime | Boolean | false | If true, the digital time hidden |
+| hide_hourhand | Boolean | false | If true, the hour hand is hidden |
+| hide_minutehand | Boolean | false | If true, the minute hand is hidden |
 | hide_secondhand | Boolean | false | If true, the second hand is hidden |
 | diameter | Integer | 220 | Diameter of the clock |
 
