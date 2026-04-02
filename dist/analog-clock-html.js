@@ -15,6 +15,9 @@ class AnalogClockHTML extends HTMLElement {
     let color_MinuteHand = "var(--primary-text-color)";
     let color_SecondHand = "var(--primary-text-color)";
     let color_Text = "var(--primary-text-color)";
+    let color_Date = "";
+    let color_Weekday = "";
+    let color_WeekNumber = "";
     let dateFormat = "";
     let timeFormat = "";
     let locale = hass.language || Intl.DateTimeFormat().resolvedOptions().locale;
@@ -312,9 +315,9 @@ class AnalogClockHTML extends HTMLElement {
       ticksGroup.querySelectorAll("line").forEach(line => line.setAttribute("stroke", color_Ticks));
       digitsGroup.querySelectorAll("text").forEach(text => text.setAttribute("fill", color_FaceDigits));
       digitalTime.style.color = color_DigitalTime;
-      dateDisplay.style.color = color_Text;
-      weekdayDisplay.style.color = color_Text;
-      weekNumberDisplay.style.color = color_Text;
+      dateDisplay.style.color = color_Date || color_Text;
+      weekdayDisplay.style.color = color_Weekday || color_Text;
+      weekNumberDisplay.style.color = color_WeekNumber || color_Text;
       hourHand.setAttribute("fill", color_HourHand);
       minHand.setAttribute("fill", color_MinuteHand);
       secHand.setAttribute("fill", color_SecondHand);
@@ -402,6 +405,18 @@ class AnalogClockHTML extends HTMLElement {
       if (config.color_Text) { color_Text = config.color_Text; }
       if (config.color_text) { color_Text = config.color_text; }
       if (color_Text.startsWith('--')) color_Text = getComputedStyle(document.documentElement).getPropertyValue(color_Text);
+
+      if (config.color_Date) { color_Date = config.color_Date; }
+      if (config.color_date) { color_Date = config.color_date; }
+      if (color_Date.startsWith('--')) color_Date = getComputedStyle(document.documentElement).getPropertyValue(color_Date);
+
+      if (config.color_Weekday) { color_Weekday = config.color_Weekday; }
+      if (config.color_weekday) { color_Weekday = config.color_weekday; }
+      if (color_Weekday.startsWith('--')) color_Weekday = getComputedStyle(document.documentElement).getPropertyValue(color_Weekday);
+
+      if (config.color_WeekNumber) { color_WeekNumber = config.color_WeekNumber; }
+      if (config.color_weeknumber) { color_WeekNumber = config.color_weeknumber; }
+      if (color_WeekNumber.startsWith('--')) color_WeekNumber = getComputedStyle(document.documentElement).getPropertyValue(color_WeekNumber);
 
       if (config.dateformat) dateFormat = config.dateformat;
       if (config.dateFormat) dateFormat = config.dateFormat;
