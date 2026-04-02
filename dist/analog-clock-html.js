@@ -2,7 +2,7 @@ class AnalogClockHTML extends HTMLElement {
   set hass(hass) {
     if (this.content) return;
 
-    console.info("%c ANALOG-CLOCK-HTML v2.0 ", "color: primary-text-color; font-weight: 400; background: transparent");
+    console.info("%c ANALOG-CLOCK-HTML v2.1 ", "color: primary-text-color; font-weight: 400; background: transparent");
 
     const config = this.config || {};
 
